@@ -259,3 +259,131 @@ int main()
 
 //}//while end
 
+//Day9.cpp
+
+#include<stdio.h>
+#include<string> //standard 
+#include<iostream>
+
+
+//구조체(구조를 만듦)
+using namespace std;
+
+struct Character
+{
+	string name;
+	float hp = 1000;
+	float ap;
+	float ad;
+	int level;
+	float def;//멤버변수
+
+	void PrintName()//멤버함수
+	{
+		printf("name : %s\n", name.c_str());//.c_str() name의 문자열을 가져온다
+	}
+
+	void Initialize(string name, float ap, float ad, int level, float def)
+	{
+		this->name = name;
+		this->ap = ap;
+		this->ad = ad;
+		this->level = level;
+		this->def = def;
+		//this ??  
+		//구조체에 접근을 하려면 .을 쓴다(직접 접근)
+		//					   -> 간접 접근
+		//자기 자신에 대한 포인터처럼 쓸수 있는 (this)
+		//포인터를 통한 접근은 간접접근을 쓴다.
+		//구조체 이름과 함수접근의 이름은 다르게 써야 좋다
+
+	}
+	void TakeDamage(float damage)
+	{
+		hp -= damage;
+
+	}
+	
+	void TakeDamage2(Character other)
+	{
+		hp -= other.ap;
+
+	}
+
+	bool CheckDead()
+	{
+		if (hp <= 0)
+		{
+			return true;
+		}
+		return false;//가급적 써준다. (if문 안에 있는 return만 쓰지 말 것.)
+	}
+};
+
+int main()
+{
+	//Character myChar;
+	//myChar.name = "Captain America";//캐릭터형 문자열
+	////myChar.level = 10;
+
+	//myChar.PrintName();
+
+	////리눅스로 하면 struct가 오류날 수 있다.
+
+	//캐릭터 정보 입력기
+	Character ezreal;
+	cout << "캐릭터 1번의 이름: ";
+	cin >> ezreal.name;
+
+	cout << "캐릭터 1번의 AP: ";
+	cin >> ezreal.ap;
+
+	cout << "캐릭터 1번의 AD: ";
+	cin >> ezreal.ad;
+
+	cout << "캐릭터 1번의 레밸: ";
+	cin >> ezreal.level;
+	
+	cout << "캐릭터 1번의 체력: ";
+	cin >> ezreal.hp;
+
+	cout << "캐릭터 1번의 방어력: ";
+	cin >> ezreal.def;
+	
+	Character braum;
+	braum.name = "Braum";
+	braum.ap = 700;
+	braum.ad = 50;
+	braum.level = 14;
+
+
+	braum.TakeDamage(ezreal.ap);
+	ezreal.TakeDamage(braum.ad);//이즈리얼이 브라움의 ad에 맞음
+
+	ezreal.TakeDamage2(braum);
+
+	printf("Ezreal's Name :%s\n", ezreal.name.c_str());
+	printf("Ezreal's AP :%f\n", ezreal.ap);
+	printf("Ezreal's AD :%f\n", ezreal.ad);
+	printf("Ezreal's Level :%d\n", ezreal.level);
+
+	printf("\n Ezreal's HP :%f\n", ezreal.hp);
+
+}
+
+
+숙제 제출 방식 수정
+1. 백그라운드에 코드가 보이게 실행창을 위로 덮어서 스크린샷.
+2. 상단 빌드 메뉴의 솔루션 정리를 실행.(메뉴->빌드->솔류션 정리)
+3.프로젝트 폴더를 압축. (솔류션 폴더는 포함하지 않음)
+4. 압축된 파일 이름을 변경. (이름_200713 형식: 이름 + _ + "날짜)
+5. 압축된 파일과 스크린샷을 제출
+
+숙제 
+욕설 필터 처리 함수 만들기
+함수 인자등은 string을 사용할 것
+욕설에 해당하는 부분은 * 처리
+입력 받은 문자열에서 욕설에 하당하는 부분만 *로 처리해서 출력(욕은 10개로 하기)
+
+
+
