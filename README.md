@@ -83,7 +83,7 @@
 //
 //	printf("num22 = %u\n", num22);//넘치는 것은 입력이 안된다.(그래서 값이 0이다)
 //
-//	//Ram의 약자는 (random exese memory)
+//	//Ram의 약자는 (random access memory)
 //	//shift가 되는 것이다.
 //	// << , >> 두가지가 존재 비트를 좌,우측으로 보내세요.
 //	//0000 0001 - <<
